@@ -29,9 +29,9 @@ namespace CommathL1
             }
             
             Helper.NormalizeSLAE(matrix, freeTerms, out Matrix normalMatrix, out freeTerms);
-            IO.PrintMatrix(matrix, "Base matrix");
-            IO.PrintMatrix(normalMatrix, "Normalized matrix");
-            IO.PrintVector(freeTerms, "Normalized vector");
+            IO.PrintMatrix(matrix, "\nBase matrix");
+            IO.PrintMatrix(normalMatrix, "\nNormalized matrix");
+            IO.PrintVector(freeTerms, "\nNormalized vector");
             Vector nextVector = new Vector(freeTerms.Elements);
             Vector previousVector = new Vector(freeTerms.Elements);
             double maxDifference=0;
