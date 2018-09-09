@@ -37,5 +37,74 @@ namespace CommathL1
                 normalVector.Elements[row] = normalVector.Elements[row] / matrix.Elements[row, row];
             }
         }
+
+        public static bool CheckPrevalence(Matrix matrix)
+        {
+            for (int row=0; row<matrix.Size; row++)
+            {
+                if(!CheckRowPrevalence(matrix, row, row))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool ReachPrevalence(Matrix matrix)
+        {
+            for (int row = 0; row < matrix.Size; row++)
+            {
+                if (!CheckRowPrevalence(matrix, row, row))
+                {
+                    double max = matrix.Elements[row, row];
+                    int wantedCell = row;
+                    for (int cell=0; cell <matrix.Size; cell++)
+                    {
+                        if (matrix.Elements[row,cell] > max)
+                        {
+                            max = matrix.Elements[row, cell];
+                            wantedCell = cell;
+                        }
+                    }
+                    if (!CheckRowPrevalence(matrix, row, wantedCell))
+                    {
+                        return false;
+                    }
+                    if (wantedCell > row)
+                    {
+                        SwopColumns(matrix, row, wantedCell);
+                    }
+                    else return false;
+                }
+            }
+            return CheckPrevalence(matrix);
+        }
+
+        private static void SwopColumns(Matrix matrix, int column1, int column2)
+        {
+            double swopper;
+            for (int row = 0; row < matrix.Size; row++)
+            {
+                swopper = matrix.Elements[row, column1];
+                matrix.Elements[row, column1] = matrix.Elements[row, column2];
+                matrix.Elements[row, column2] = swopper;
+            }
+        }
+
+        private static bool CheckRowPrevalence(Matrix matrix, int row, int cell)
+        {
+            bool comparer = true;
+            double sum = 0;
+            for (int cells = 0; cells < matrix.Size; cells++)
+            {
+                sum += Math.Abs(matrix.Elements[row, cells]);
+            }
+            sum -= matrix.Elements[row, cell];
+            if (Math.Abs(matrix.Elements[row, cell]) <= sum)
+            {
+                comparer = false;
+            }
+            return comparer;
+        }
     }
 }

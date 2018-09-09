@@ -12,6 +12,12 @@ namespace CommathL1
             try
             {
                 matrix = IO.ReadMatrix();
+                if (!Helper.CheckPrevalence(matrix) && !Helper.ReachPrevalence(matrix))
+                {
+                    Console.WriteLine("There is no diagonal prevalence \nPress anything to exit");
+                    Console.ReadKey();
+                    return;
+                }
                 freeTerms.Elements = IO.ReadVector(matrix.Size);
                 accuracy = IO.ReadAccuracy();
             }
@@ -21,6 +27,7 @@ namespace CommathL1
                 Console.ReadKey();
                 return;
             }
+            
             Helper.NormalizeSLAE(matrix, freeTerms, out Matrix normalMatrix, out freeTerms);
             IO.PrintMatrix(matrix, "Base matrix");
             IO.PrintMatrix(normalMatrix, "Normalized matrix");
