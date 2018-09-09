@@ -34,7 +34,7 @@ namespace CommathL1
 
         public static double[] ReadVector(int matrixSize)
         {
-            Console.WriteLine($"Please, enter {matrixSize} free terms: ");
+            Console.WriteLine($"Please, enter {matrixSize} free terms:");
             double[] elements = new double[matrixSize];
             for (int counter=0;counter<matrixSize;counter++)
             {
@@ -67,6 +67,16 @@ namespace CommathL1
                 }
                 Console.WriteLine();
             }
+        }
+
+        public static double ReadAccuracy()
+        {
+            Console.WriteLine($"Please, enter the accuracy:");
+            if (!double.TryParse(Console.ReadLine(), out double accuracy))
+            {
+                throw new Exception("Not an double value");
+            }
+            return accuracy;
         }
     }
 }

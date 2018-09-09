@@ -6,21 +6,14 @@ namespace CommathL1
     {
         static void Main(string[] args)
         {
-            int matrixSize = 3;
-            double accuracy = 0.0001;
-            double[,] input = new double[,] 
-            {
-                {10,1,-1,11},
-                {1,10,-1,10},
-                {-1,1,10,10}
-
-            };
+            double accuracy;
             Matrix matrix = new Matrix();
             Vector freeTerms = new Vector();
             try
             {
                 matrix = IO.ReadMatrix();
                 freeTerms.Elements = IO.ReadVector(matrix.Size);
+                accuracy = IO.ReadAccuracy();
             }
             catch (Exception exception)
             {
