@@ -7,6 +7,7 @@ namespace CommathL1
         static void Main(string[] args)
         {
             double accuracy;
+            int size;
             Matrix matrix = new Matrix();
             Vector freeTerms = new Vector();
             try
@@ -14,8 +15,12 @@ namespace CommathL1
                 switch (args.Length)
                 {
                     case 0:
-                        matrix = IO.ReadMatrix();
-                        freeTerms.Elements = IO.ReadVector(matrix.Size);
+                        size = IO.ReadSize();
+                        if(!IO.Randomize(size , out matrix, out freeTerms))
+                        {
+                            matrix = IO.ReadMatrix(size);
+                            freeTerms.Elements = IO.ReadVector(matrix.Size);
+                        }
                         accuracy = IO.ReadAccuracy();
                         break;
                     case 1:
@@ -31,6 +36,7 @@ namespace CommathL1
                 Console.ReadKey();
                 return;
             }
+            IO.PrintMatrix(matrix, "\nBase matrix");
             if (!Helper.CheckPrevalence(matrix) && !Helper.ReachPrevalence(matrix))
             {
                 Console.WriteLine("There is no diagonal prevalence \nPress anything to exit");
@@ -38,7 +44,6 @@ namespace CommathL1
                 return;
             }
             Helper.NormalizeSLAE(matrix, freeTerms, out Matrix normalMatrix, out freeTerms);
-            IO.PrintMatrix(matrix, "\nBase matrix");
             IO.PrintMatrix(normalMatrix, "\nNormalized matrix");
             IO.PrintVector(freeTerms, "\nNormalized vector");
             Vector nextVector = new Vector(freeTerms.Elements);

@@ -6,17 +6,8 @@ namespace CommathL1
     public static class IO
     {
 
-        public static Matrix ReadMatrix()
+        public static Matrix ReadMatrix(int matrixSize)
         {
-            Console.Write("Please, enter the size of the matrix: ");
-            if (!int.TryParse(Console.ReadLine(), out int matrixSize))
-            {
-                throw new Exception("Not an integer value");
-            }
-            if (matrixSize<1 || matrixSize>20)
-            {
-                throw new Exception("Unacceptable value");
-            }
             double[,] elements = new double[matrixSize, matrixSize];
             Console.WriteLine($"Enter {elements.Length} double-type elements:");
             for(int row=0; row < matrixSize; row++)
@@ -31,6 +22,20 @@ namespace CommathL1
             }
             Matrix matrix = new Matrix(matrixSize, elements);
             return matrix;
+        }
+
+        public static int ReadSize()
+        {
+            Console.Write("Please, enter the size of the matrix: ");
+            if (!int.TryParse(Console.ReadLine(), out int matrixSize))
+            {
+                throw new Exception("Not an integer value");
+            }
+            if (matrixSize < 1 || matrixSize > 20)
+            {
+                throw new Exception("Unacceptable value");
+            }
+            return matrixSize;
         }
 
         public static double[] ReadVector(int matrixSize)
@@ -125,6 +130,33 @@ namespace CommathL1
                 }
             }
             file.Close();
+        }
+
+        public static bool Randomize(int size, out Matrix matrix, out Vector vector)
+        {
+            Console.WriteLine("Press r to randomize matrix, any key to input:");
+            double[,] matrixElements = new double[size, size];
+            double[] vectorElements = new double[size];
+            Random randomizer = new Random();
+            if (Console.ReadKey().Key == ConsoleKey.R)
+            {
+                for(int row = 0; row < size; row++)
+                {
+                    for (int cell = 0; cell < size; cell++)
+                    {
+                        matrixElements[row, cell] = randomizer.NextDouble() * 100;
+                    }
+                    vectorElements[row] = randomizer.NextDouble() * 100;
+                }
+                matrix = new Matrix(size, matrixElements);
+                vector = new Vector(vectorElements);
+                Console.WriteLine();
+                return true;
+            }
+            matrix = new Matrix();
+            vector = new Vector();
+            Console.WriteLine();
+            return false;
         }
     }
 }
