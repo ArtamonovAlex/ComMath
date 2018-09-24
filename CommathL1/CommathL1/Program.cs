@@ -11,15 +11,19 @@ namespace CommathL1
             Vector freeTerms = new Vector();
             try
             {
-                matrix = IO.ReadMatrix();
-                if (!Helper.CheckPrevalence(matrix) && !Helper.ReachPrevalence(matrix))
+                switch (args.Length)
                 {
-                    Console.WriteLine("There is no diagonal prevalence \nPress anything to exit");
-                    Console.ReadKey();
-                    return;
+                    case 0:
+                        matrix = IO.ReadMatrix();
+                        freeTerms.Elements = IO.ReadVector(matrix.Size);
+                        accuracy = IO.ReadAccuracy();
+                        break;
+                    case 1:
+                        IO.ReadFromFile(args[0], out matrix, out freeTerms, out accuracy);
+                        break;
+                    default:
+                        throw new Exception("Invalid arguments");
                 }
-                freeTerms.Elements = IO.ReadVector(matrix.Size);
-                accuracy = IO.ReadAccuracy();
             }
             catch (Exception exception)
             {
@@ -27,7 +31,12 @@ namespace CommathL1
                 Console.ReadKey();
                 return;
             }
-            
+            if (!Helper.CheckPrevalence(matrix) && !Helper.ReachPrevalence(matrix))
+            {
+                Console.WriteLine("There is no diagonal prevalence \nPress anything to exit");
+                Console.ReadKey();
+                return;
+            }
             Helper.NormalizeSLAE(matrix, freeTerms, out Matrix normalMatrix, out freeTerms);
             IO.PrintMatrix(matrix, "\nBase matrix");
             IO.PrintMatrix(normalMatrix, "\nNormalized matrix");
@@ -43,7 +52,6 @@ namespace CommathL1
                 IO.PrintVector(nextVector,$"{iteration} iteration");
                 nextVector.Elements.CopyTo(previousVector.Elements, 0);
                 Console.WriteLine($"Error: {maxDifference}");
-                Console.ReadLine();
             } while (accuracy<maxDifference);
             Console.WriteLine($"Ammount of iterations: {iteration}");
             Console.ReadLine();

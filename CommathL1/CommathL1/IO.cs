@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace CommathL1
 {
@@ -77,6 +78,53 @@ namespace CommathL1
                 throw new Exception("Not an double value");
             }
             return accuracy;
+        }
+
+        public static void ReadFromFile(string path, out Matrix matrix, out Vector vector, out double accuracy)
+        {
+            
+            FileStream file = new FileStream(path, FileMode.Open, FileAccess.Read);
+            using (StreamReader reader = new StreamReader(file))
+            {
+                char[] separator = { ' ' };
+                string inputString = reader.ReadLine();
+                string[] elements = inputString.Split(separator);
+                if (!int.TryParse(elements[0], out int size) || size<1 || size>20) {
+                    throw new Exception("Invalid size");
+                }
+                if (elements.Length != 2 + size*(size+1)) //matrix size + matrix [size*size] + vector[size] + accuracy
+                {
+                    throw new Exception("Invalid structure");
+                }
+                double[,] matrixElements = new double[size, size];
+                for (int row = 0; row < size; row++)
+                {
+                    for (int cell = 0; cell < size; cell++)
+                    {
+                        if(!double.TryParse(elements[1 + row * size + cell], out matrixElements[row, cell])) //matrix size + number of matrix element
+                        {
+                            throw new Exception($"Invalid matrix element {elements[1 + row * size + cell]}");
+                        }
+                    }
+                }
+                Matrix inputMatrix = new Matrix(size, matrixElements);
+                matrix = inputMatrix;
+                double[] vectorElements = new double[size];
+                for (int counter = 0; counter<size; counter++)
+                {
+                    if(!double.TryParse(elements[1 + size*size + counter], out vectorElements[counter])) //matrix size + matrix [size*size] + number of vector element
+                    {
+                        throw new Exception($"Invalid vector element {elements[1 + size * size + counter]}"); 
+                    }
+                }
+                Vector inputVector = new Vector(vectorElements);
+                vector = inputVector;
+                if (!double.TryParse(elements[1 + size*(size+1)], out accuracy)) //matrix size + matrix[size*size] + vector[size]
+                {
+                    throw new Exception("Invalid accuracy");
+                }
+            }
+            file.Close();
         }
     }
 }

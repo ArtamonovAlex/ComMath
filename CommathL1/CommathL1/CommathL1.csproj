@@ -53,5 +53,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="3x3_reachable_prevalence.txt" />
+    <Content Include="test.txt" />
+    <Content Include="7x7.txt" />
+    <Content Include="3x3_with_no_prevalence.txt" />
+    <Content Include="3x3.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
