@@ -53,7 +53,7 @@ namespace CommathL2
             }
         }
 
-        public static void PrintResults(double result, int parts, double error)
+        public static void PrintResults(double result, long parts, double error)
         {
             Console.WriteLine($"Result: {Math.Round(result,5)}\nParts: {parts}\nError: {Math.Round(error,7)}");
         }

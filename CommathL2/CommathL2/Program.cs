@@ -21,7 +21,7 @@ namespace CommathL2
                 rightBorder = IO.ReadBorder("right");
                 accuracy = IO.ReadAccuracy();
 
-                double result = Integrator.Integrate(function, leftBorder, rightBorder, accuracy, out int parts, out double error);
+                double result = Integrator.Integrate(function, leftBorder, rightBorder, accuracy, out long parts, out double error);
                 IO.PrintResults(result, parts, error);
             } catch (Exception ex)
             {

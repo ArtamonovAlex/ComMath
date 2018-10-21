@@ -4,7 +4,7 @@ namespace CommathL2
 {
     public static class Integrator
     {
-        public static double Integrate(Func<double, double> function, double leftBorder, double rightBorder, double accuracy, out int parts, out double error)
+        public static double Integrate(Func<double, double> function, double leftBorder, double rightBorder, double accuracy, out long parts, out double error)
         {
             double firstResult = 0;
             double result = 0;
