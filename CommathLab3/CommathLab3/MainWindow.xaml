@@ -7,8 +7,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280" MinHeight="563" MinWidth="800">
-
+        Title="Интерполяция" Height="720" Width="1280" MinHeight="563" MinWidth="800">
     <Grid Name="Container">
         <Grid.RowDefinitions>
             <RowDefinition MinHeight="470"/>
@@ -36,7 +35,7 @@
                                Margin="10,79,0,0" HorizontalAlignment="Left" Width="162" Height="105" VerticalAlignment="Top" />
         <TextBlock Text="" Name="ErrorMessage" Foreground="Red" TextWrapping="Wrap"
             HorizontalAlignment="Left" Margin="10,198,0,0" VerticalAlignment="Top" Width="162" Height="61"/>
-        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="689" VerticalAlignment="Top" Width="1" Grid.RowSpan="2" Margin="0,10,0,-10"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Width="1" Grid.RowSpan="2"/>
         <TextBlock TextWrapping="Wrap" Text="Параметры построения графика:" 
             HorizontalAlignment="Left" Margin="10,320,0,0" VerticalAlignment="Top" Height="34" Width="155"/>
         <xctk:WatermarkTextBox Name="StartBox" Grid.Column="0" Watermark="От"
