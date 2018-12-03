@@ -47,8 +47,19 @@ namespace CommathLab3
 
                 //Graphics----------------------------------------------------
                 PlotModel model = new PlotModel();
-                model.Series.Add(new FunctionSeries(func, graphParams[0], graphParams[1], 0.1, FunctionBox.Text));
-                model.Series.Add(new FunctionSeries(Polynom.Compute, graphParams[0], graphParams[1], 0.1, "Polynom"));
+                model.PlotType = PlotType.XY;
+                model.Series.Add(new FunctionSeries(func, graphParams[0], graphParams[1], 0.01, FunctionBox.Text));
+                model.Series.Add(new FunctionSeries(Polynom.Compute, graphParams[0], graphParams[1], 0.01, "Polynom"));
+                foreach (double value in x)
+                {
+                    OxyPlot.Annotations.PointAnnotation point = new OxyPlot.Annotations.PointAnnotation
+                    {
+                        X = value,
+                        Y = func(value),
+                        Shape = MarkerType.Square
+                };
+                    model.Annotations.Add(point);
+                }
                 PlotView view = new PlotView
                 {
                     Model = model
