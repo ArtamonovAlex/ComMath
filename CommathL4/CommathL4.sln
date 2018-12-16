@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommathL4", "CommathL4\CommathL4.csproj", "{7F30AAEA-39C5-4E0E-A5B3-B316381A8634}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F30AAEA-39C5-4E0E-A5B3-B316381A8634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F30AAEA-39C5-4E0E-A5B3-B316381A8634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F30AAEA-39C5-4E0E-A5B3-B316381A8634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F30AAEA-39C5-4E0E-A5B3-B316381A8634}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5BC59085-E9C2-4016-998E-629C97F3E979}
+	EndGlobalSection
+EndGlobal

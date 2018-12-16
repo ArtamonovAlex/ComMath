@@ -1,0 +1,32 @@
+﻿<Window x:Class="CommathL4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:local="clr-namespace:CommathL4"
+        mc:Ignorable="d"
+        Title="Решение ОДУ" Height="720" Width="1280" MinHeight="563" MinWidth="800" DataContext="MainWindow">
+    <Grid Name="Container">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="Auto" MinWidth="182"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ComboBox Name="FunctionBox" Grid.Column="0"
+                   Height="24" Width="165" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <xctk:WatermarkTextBox Name="XInputBox" Watermark="x0" Grid.Column="0"
+                               Height="24" Width="80" Margin="10,46,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <xctk:WatermarkTextBox Name="YInputBox" Watermark="y0" Grid.Column="0"
+                               Height="24" Width="80" Margin="95,46,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <xctk:WatermarkTextBox Name="XNInputBox" Watermark="xN" Grid.Column="0"
+                               Height="24" Width="80" Margin="10,73,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <xctk:WatermarkTextBox Name="AccInputBox" Watermark="Точность" Grid.Column="0"
+                               Height="24" Width="80" Margin="95,73,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Content="Построить график" Click="Button_Click" Grid.Column="0"
+                Height="24" Width="165" Margin="10,100,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock Name="ErrorBox" Grid.Column="0"
+                Height="auto" Width="165" Margin="10,129,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="Red"/>
+        <oxy:PlotView Name="Plot" Grid.Column="1"/>
+    </Grid>
+</Window>
