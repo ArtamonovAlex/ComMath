@@ -47,7 +47,7 @@ namespace CommathLab3
                 {
                     y[counter] = func(x[counter]);
                 }
-                Polynom = new LagrangePolynomial(func, x, y);
+                Polynom = new LagrangePolynomial(x, y);
                 //------------------------------------------------------------
 
                 //Graphics----------------------------------------------------

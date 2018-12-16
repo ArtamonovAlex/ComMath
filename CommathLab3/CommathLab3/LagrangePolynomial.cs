@@ -8,13 +8,11 @@ namespace CommathLab3
 {
     public class LagrangePolynomial
     {
-        private Func<double, double> Function;
         private double[] variables;
         private double[] y;
 
-        public LagrangePolynomial(Func<double, double> function, double[] variables, double [] y)
+        public LagrangePolynomial( double[] variables, double [] y)
         {
-            this.Function = function;
             this.variables = variables;
             this.y = y;
         }
