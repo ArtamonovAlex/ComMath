@@ -10,20 +10,18 @@ namespace CommathLab3
     {
         private Func<double, double> Function;
         private double[] variables;
+        private double[] y;
 
-        public LagrangePolynomial(Func<double, double> function, double[] variables)
+        public LagrangePolynomial(Func<double, double> function, double[] variables, double [] y)
         {
             this.Function = function;
             this.variables = variables;
+            this.y = y;
         }
 
         public double Compute(double xValue)
         {
-            double[] y = new double[variables.Length];
-            for (int counter = 0; counter < y.Length; counter++)
-            {
-                y[counter] = Function(variables[counter]);
-            }
+            
             double result = 0;
             double basicPolynom;
             for (int j = 0; j < variables.Length; j++)

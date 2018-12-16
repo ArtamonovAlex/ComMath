@@ -42,7 +42,12 @@ namespace CommathLab3
             if (mistake == null)
             {
                 //Computing---------------------------------------------------
-                Polynom = new LagrangePolynomial(func, x);
+                double[] y = new double[x.Length];
+                for (int counter = 0; counter < y.Length; counter++)
+                {
+                    y[counter] = func(x[counter]);
+                }
+                Polynom = new LagrangePolynomial(func, x, y);
                 //------------------------------------------------------------
 
                 //Graphics----------------------------------------------------
